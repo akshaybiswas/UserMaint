@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+        </f:facet>
+        <title>Lucky Bamboo</title>
+    </h:head>
+    <h:body>
+        <header id="head">
+            <div class="container">
+                <div class="header">
+                    <div class="header-logo">
+                        <h:graphicImage name="images/logo.png" library="test" />
+                    </div>
+                    <div class="header-text">
+                        <div class="header-text_container">
+                            <p class="header-text__main">Lead your business with passion</p>
+                            <span class="header-text__sub">By the employee | For the employee | To the employee</span> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section id="login">
+            <div class="form-container">
+                <h:form class="login-form">
+                    <p:growl id="growl" sticky="true" showDetail="true" life="5" autoUpdate="true" />
+                    <p:panelGrid columns="1">
+                        <p:inputText placeholder="Username" id="username" value="#{loginController.userId}" required="true" label="username" />
+                        <p:password placeholder="Password" id="password" value="#{loginController.password}" required="true" label="password" />
+                    </p:panelGrid>
+                    <p:commandButton action="#{loginController.userAuthenticate()}" value="Submit"></p:commandButton> 
+                </h:form>   
+            </div>
+        </section>
+        <div class="footer">
+            <span class="footer-text">©  <a class="tag-cloud-link" href="http://www.dgfoundation.in">Deepa Ghosh Research Foundation</a> </span>
+        </div>
+        <h:outputStylesheet name="css/custom.css" library="test" />
+    </h:body>
+</html>
+

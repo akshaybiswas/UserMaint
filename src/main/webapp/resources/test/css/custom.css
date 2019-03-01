@@ -1,0 +1,206 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 26 Feb, 2019, 1:26:38 PM
+    Author     : dgrfiv
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Monda:400,700|Righteous');
+
+
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+    margin:0;
+    padding:0;
+}
+
+html, body{
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    font-size: 0.625rem;
+    box-sizing: border-box;
+    background-image: linear-gradient(to bottom right, rgba(184, 0, 230,1), rgba(255,0,0,1));
+    background-repeat: no-repeat, no-repeat;
+    background-position: left center, left top;
+    background-size: auto, 100% 100%;
+}
+
+.container {
+    width: 90%;
+    padding-left: 5%;
+    box-sizing: border-box;
+}
+
+wrapper {
+    position: relative;
+}
+
+header {
+    background-color: rgba(0,0,0,0.2);
+    border-bottom: 0.06rem solid;
+    border-bottom-color: rgba(0,0,0,0.2);
+    box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.3);
+    margin-bottom: 2rem;
+}
+
+header .header {
+    height: 8rem;
+    position: relative;
+}
+
+header .header-logo{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 8rem;
+    width: 8rem;
+}
+
+header .header-logo img{
+    height: 5rem;
+    padding: 1.5rem;
+}
+
+header .header-text {
+    position: absolute;
+    top:0;
+    left: 8rem;
+    height: 8rem;
+    width: 50rem;
+}
+
+.header-text .header-text_container {
+    position: relative;
+    padding: 2rem 1rem;
+}
+
+header .header-text .header-text__main {
+    font-size: 2rem;
+    font-family: 'Righteous', cursive;
+    text-transform: capitalize;
+    background: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+header .header-text .header-text__sub {
+    font-size: 0.8rem;
+    font-weight: bold;
+    font-family: 'Monda', sans-serif;
+    letter-spacing: 0.13rem;
+    text-transform: uppercase;
+    color: rgba(11,0,214,0.8);
+}
+
+/* ~~~~~~~~~~~~~~ SECTION START ~~~~~~~~~~~~~~ */
+
+section {
+    position: relative;
+    top: 14rem;
+}
+
+section .form-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    padding: 10rem 5rem;
+    background: rgba(0,0,0,0.6);
+    border: 0.1rem solid #000;
+    border-radius: 1rem;
+    font-size:1rem;
+
+}
+
+nav {
+    float: left;
+    padding-left: 1rem;
+    display: inline-block;
+}
+
+nav .nav-container {
+    width: 15rem;
+    text-align: center !important;
+}
+
+nav .menu-container {
+    width: auto;
+    background: rgba(222,222,222,0.6);
+    border-right: 0.1rem solid #eee; 
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+}
+
+
+
+.main {
+    display: inline-block;
+    float: left;
+    margin-left: 3rem;
+    background: rgba(222,222,222,0.6);
+    min-width: 70rem;
+    height: auto;
+    border: 1px solid #eee;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    padding: 2rem;
+}
+
+div .content-container {
+    width: 100%;
+    font-size: 1rem;
+    box-sizing: border-box;
+    background-image: linear-gradient(to bottom right, rgba(184, 0, 230,1), rgba(255,0,0,1));
+    border: 1px solid #333;
+    border-radius: 0.5rem;
+    color: #fff;   
+}
+
+.content-container h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: 'Monda', sans-serif;
+    text-transform: capitalize; 
+    background-color: rgba(0,0,0,0.4);
+    color: #eee;
+    padding: 2rem;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+    visibility: hidden;
+}
+
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    height: 4rem;
+    background-color: rgba(0,0,0,0.2);
+    border-top: 0.06rem solid;
+    border-top-color: rgba(0,0,0,0.2);
+    box-shadow: 0 -1.5rem 2rem rgba(0, 0, 0, 0.3);
+    margin-top: 2rem;
+}
+
+.footer-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.footer-text a {
+    text-align: center;
+    font-size: 1rem;
+    text-decoration: none;
+    color: #fff;
+    
+}
