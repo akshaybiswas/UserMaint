@@ -10,7 +10,9 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import org.dgrf.javadev.DAO.UserDataDAO;
 import org.dgrf.javadev.UserAuth;
+import org.dgrf.javadev.entities.UserData;
 
 /**
  *
@@ -22,6 +24,7 @@ public class LoginController implements Serializable {
 
     private String userId;
     private String password;
+    private String userName;
 
     /**
      * Creates a new instance of LoginConctroller
@@ -35,6 +38,7 @@ public class LoginController implements Serializable {
         int returnCode = userAuth.AuthenticateUser(userId, password);
 
         FacesContext context = FacesContext.getCurrentInstance();
+        context.getExternalContext().getFlash().setKeepMessages(true);
         FacesMessage fm;
 
         switch (returnCode) {
@@ -43,9 +47,10 @@ public class LoginController implements Serializable {
                 context.addMessage(null, fm);
                 return "index?faces-redirect=true";
             case 1:
-                fm = new FacesMessage("2nd message", "User logged in successfully. :)");
-                context.addMessage(null, fm);
-                System.out.println("Hello");
+
+                UserDataDAO uD = new UserDataDAO();
+                UserData userData = uD.findUserData(userId);
+                userName = userData.getUserFirstname();
                 return "loggedin/landing?faces-redirect=true";
             case 2:
                 fm = new FacesMessage("3rd message", "Enterd wrong credentials. :(");
@@ -75,6 +80,9 @@ public class LoginController implements Serializable {
         FacesMessage fm;
         fm = new FacesMessage("Loged Out", "User logged out successfully.");
         context.addMessage(null, fm);
+        
+        userId = null;
+        password = null;
         return "/index?faces-redirect=true";
 
     }
@@ -93,6 +101,14 @@ public class LoginController implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
 }
