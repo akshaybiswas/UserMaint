@@ -35,10 +35,11 @@ public class LoginFilter implements Filter{
         // For other requests loginBean is present but we need to check if user has logged in successfully
         if (loginController == null || loginController.getUserId() == null) {
             String contextPath = ((HttpServletRequest)request).getContextPath();
-            contextPath = contextPath+"/SessionExpired.xhtml";
+            contextPath = contextPath+"/faces/SessionExpired.xhtml";
             ((HttpServletResponse)response).sendRedirect(contextPath);
         }
-         HttpServletRequest req = (HttpServletRequest) request;
+        
+        HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         if (!req.getRequestURI().startsWith(req.getContextPath() + ResourceHandler.RESOURCE_IDENTIFIER)) { // Skip JSF resources (CSS/JS/Images/etc)
             res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.

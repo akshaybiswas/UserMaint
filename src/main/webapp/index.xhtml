@@ -34,16 +34,16 @@
             <div class="form-container">
                 <h:form class="login-form">
                     <p:growl id="growl" sticky="true" showDetail="true" life="5" autoUpdate="true" />
-                    <p:panelGrid columns="1">
+                    <p:panelGrid columns="1" style="margin-bottom:10px; font-size: 1.5rem;">
                         <p:inputText placeholder="Username" id="username" value="#{loginController.userId}" required="true" label="username" />
                         <p:password placeholder="Password" id="password" value="#{loginController.password}" required="true" label="password" />
                     </p:panelGrid>
-                    <p:commandButton action="#{loginController.userAuthenticate()}" value="Submit"></p:commandButton> 
+                    <p:commandButton action="#{loginController.userAuthenticate()}" value="Submit" style="text-align:center;"></p:commandButton> 
                 </h:form>   
             </div>
         </section>
         <div class="footer">
-            <span class="footer-text">©  <a class="tag-cloud-link" href="http://www.dgfoundation.in">Deepa Ghosh Research Foundation</a> </span>
+            <span class="footer-text">© <a class="tag-cloud-link" href="http://www.dgfoundation.in">Deepa Ghosh Research Foundation</a> </span>
         </div>
         <h:outputStylesheet name="css/custom.css" library="test" />
     </h:body>

@@ -11,6 +11,7 @@ import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import org.dgrf.javadev.DAO.UserDataDAO;
+import org.dgrf.javadev.dto.ResponseCode;
 import org.dgrf.javadev.UserAuth;
 import org.dgrf.javadev.entities.UserData;
 
@@ -42,27 +43,26 @@ public class LoginController implements Serializable {
         FacesMessage fm;
 
         switch (returnCode) {
-            case 0:
-                fm = new FacesMessage("1st message", "Invalid User");
-                context.addMessage(null, fm);
-                return "index?faces-redirect=true";
-            case 1:
-
+            case ResponseCode.SUCCESS:
                 UserDataDAO uD = new UserDataDAO();
                 UserData userData = uD.findUserData(userId);
                 userName = userData.getUserFirstname();
                 return "loggedin/landing?faces-redirect=true";
-            case 2:
-                fm = new FacesMessage("3rd message", "Enterd wrong credentials. :(");
+            case ResponseCode.INVALID_USER:
+                fm = new FacesMessage("Invalid User", "User not found.");
                 context.addMessage(null, fm);
                 return "index?faces-redirect=true";
-            case 3:
-                fm = new FacesMessage("4th message", "Inactive User Account!");
+            case ResponseCode.WRONG_CREDENTIALS:
+                fm = new FacesMessage("Wrong Input", "Enterd wrong credentials. :(");
+                context.addMessage(null, fm);
+                return "index?faces-redirect=true";
+            case ResponseCode.INACTIVE_USER:
+                fm = new FacesMessage("Account Disabled", "Inactive User Account!");
                 context.addMessage(null, fm);
                 return "index?faces-redirect=true";
 
-            case 4:
-                fm = new FacesMessage("5th message", "You have exceeded your attempts.");
+            case ResponseCode.LOGIN_ATTEMPTS_EXCEEDED:
+                fm = new FacesMessage("Tried Enough", "You have exceeded your attempts.");
                 context.addMessage(null, fm);
                 return "index?faces-redirect=true";
 
@@ -80,11 +80,17 @@ public class LoginController implements Serializable {
         FacesMessage fm;
         fm = new FacesMessage("Loged Out", "User logged out successfully.");
         context.addMessage(null, fm);
-        
         userId = null;
         password = null;
         return "/index?faces-redirect=true";
-
+    }
+    
+    public String userRedirect() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        FacesMessage fm;
+        fm = new FacesMessage("Session Expired", "Your session has expired.");
+        context.addMessage(null, fm);
+        return "/index?faces-redirect=true";
     }
 
     public String getUserId() {

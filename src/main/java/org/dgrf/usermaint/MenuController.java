@@ -9,6 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.inject.Inject;
 import org.primefaces.model.menu.DefaultMenuItem;
 import org.primefaces.model.menu.DefaultMenuModel;
 import org.primefaces.model.menu.DefaultSubMenu;
@@ -21,7 +22,10 @@ import org.primefaces.model.menu.MenuModel;
 @Named(value = "menuController")
 @RequestScoped
 public class MenuController {
-
+    
+    @Inject
+    LoginController loginController;
+    
     /**
      * Creates a new instance of MenuView
      */
@@ -38,8 +42,6 @@ public class MenuController {
         //First submenu
         DefaultSubMenu mainSubmenu = new DefaultSubMenu("Menu");
         DefaultMenuItem item;
-        MainNavigation mNav = new MainNavigation();
-        mNav.mainNavLanding();
         String menuUrl;
         
         item = new DefaultMenuItem("Home");
@@ -47,13 +49,13 @@ public class MenuController {
         item.setOutcome(menuUrl);
         mainSubmenu.addElement(item);
         
-        item = new DefaultMenuItem("About");           
-        menuUrl = "/loggedin/about?faces-redirect=true";
+        item = new DefaultMenuItem("Users");           
+        menuUrl = "/loggedin/UserMaintList?faces-redirect=true";
         item.setOutcome(menuUrl);
         mainSubmenu.addElement(item);
         
-        item = new DefaultMenuItem("Service");           
-        menuUrl = "/loggedin/service?faces-redirect=true";
+        item = new DefaultMenuItem("Change Password");           
+        menuUrl = "/loggedin/ChangeUserPassword?faces-redirect=true&userid=" + loginController.getUserId();
         item.setOutcome(menuUrl);
         mainSubmenu.addElement(item);
         
@@ -75,23 +77,6 @@ public class MenuController {
         model.addElement(mainSubmenu);
     }
 
-    
-
-//    public void save() {
-//        addMessage("Success", "Data saved");
-//    }
-// 
-//    public void update() {
-//        addMessage("Success", "Data updated");
-//    }
-// 
-//    public void delete() {
-//        addMessage("Success", "Data deleted");
-//    }
-//    public void addMessage(String summary, String detail) {
-//        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
-//        FacesContext.getCurrentInstance().addMessage(null, message);
-//    }
 
     public MenuModel getModel() {
         return model;
